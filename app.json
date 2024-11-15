@@ -1,3 +1,141 @@
 {
-  "_comment": "This file is generated. Please edit .homeycompose/app.json instead."
+  "_comment": "This file is generated. Please edit .homeycompose/app.json instead.",
+  "id": "name.klep.homekitty",
+  "version": "2.3.1",
+  "compatibility": ">=8.1.1",
+  "sdk": 3,
+  "brandColor": "#FE9C21",
+  "homeyCommunityTopicId": 72824,
+  "permissions": [
+    "homey:manager:api"
+  ],
+  "platforms": [
+    "local"
+  ],
+  "name": {
+    "en": "HomeKitty"
+  },
+  "description": {
+    "en": "Control your Homey devices with iOS and Siri",
+    "nl": "Bedien je Homey apparaten met iOS en Siri"
+  },
+  "tags": {
+    "en": [
+      "homekit",
+      "home",
+      "siri",
+      "iOS",
+      "iphone",
+      "ipad",
+      "homeykit",
+      "homekitty",
+      "homeykitty",
+      "apple"
+    ]
+  },
+  "category": [
+    "tools"
+  ],
+  "images": {
+    "small": "/assets/images/small.jpg",
+    "large": "/assets/images/large.jpg",
+    "xlarge": "/assets/images/xlarge.jpg"
+  },
+  "author": {
+    "name": "Robert Klep",
+    "email": "robert@klep.name"
+  },
+  "bugs": {
+    "url": "https://github.com/robertklep/name.klep.homekitty/issues/"
+  },
+  "source": "https://github.com/robertklep/name.klep.homekitty/",
+  "contributing": {
+    "donate": {
+      "paypal": {
+        "username": "robertklep"
+      }
+    }
+  },
+  "api": {
+    "ping": {
+      "method": "GET",
+      "path": "/ping"
+    },
+    "getDevices": {
+      "method": "GET",
+      "path": "/devices"
+    },
+    "exposeDevice": {
+      "method": "PUT",
+      "path": "/devices/:id"
+    },
+    "unexposeDevice": {
+      "method": "DELETE",
+      "path": "/devices/:id"
+    },
+    "reset": {
+      "method": "POST",
+      "path": "/reset"
+    }
+  },
+  "flow": {
+    "triggers": [
+      {
+        "id": "buttonpress",
+        "title": {
+          "en": "The button was pressed",
+          "nl": "De knop is ingedrukt"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=flow-starter"
+          }
+        ]
+      }
+    ]
+  },
+  "drivers": [
+    {
+      "name": {
+        "en": "Flow Starter ᵇᵉᵗᵃ"
+      },
+      "class": "other",
+      "capabilities": [
+        "button"
+      ],
+      "capabilitiesOptions": {
+        "button": {
+          "preventInsights": true,
+          "uiComponent": null
+        }
+      },
+      "platforms": [
+        "local"
+      ],
+      "connectivity": [
+        "lan"
+      ],
+      "images": {
+        "small": "/drivers/flow-starter/assets/images/small.png",
+        "large": "/drivers/flow-starter/assets/images/large.png",
+        "xlarge": "/drivers/flow-starter/assets/images/xlarge.png"
+      },
+      "pair": [
+        {
+          "id": "list_devices",
+          "template": "list_devices",
+          "navigation": {
+            "next": "add_device"
+          }
+        },
+        {
+          "id": "add_device",
+          "template": "add_devices"
+        }
+      ],
+      "id": "flow-starter"
+    }
+  ]
 }
